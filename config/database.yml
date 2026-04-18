@@ -1,0 +1,24 @@
+# 1. Define the anchor first
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+
+# 2. Use the anchor below
+development:
+  <<: *default
+  adapter: postgresql
+  encoding: unicode
+  schema_search_path: 'public'
+  host: aws-1-us-east-2.pooler.supabase.com
+  port: 6543
+  database: postgres
+  username: postgres.flrrwpqqgvbnwbquqbgm
+  password: '_B?6G375XXDv@,X'
+  variable:
+    prepared_statements: false
+  sslmode: require
+
+test:
+  <<: *default
+  database: laceup_test
